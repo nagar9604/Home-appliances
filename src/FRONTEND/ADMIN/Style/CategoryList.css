@@ -1,0 +1,118 @@
+/* CategoryList.css */
+
+  /* Add a class to the main div in CategoryList.jsx */
+  .category-list-container {
+      padding: 20px;
+    }
+    
+    .category-list-container .table-wrapper2 {
+      width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .category-list-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .category-list-container thead {
+    background-color: #007bff; /* Primary blue color */
+    color: #fff;
+  }
+  
+  .category-list-container th,
+  .category-list-container td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .category-list-container tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .category-list-container tbody tr:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .category-list-container button {
+    padding: 8px 12px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .category-list-container button:first-child {
+    background-color: #007bff; /* Edit button color */
+    color: #fff;
+  }
+  
+  .category-list-container button:first-child:hover {
+    background-color: #0056b3;
+  }
+  
+  .category-list-container button:last-child {
+    background-color: #dc3545; /* Delete button color */
+    color: #fff;
+  }
+  
+  .category-list-container button:last-child:hover {
+    background-color: #c82333;
+  }
+  
+  /* CategoryForm Styles (More Specific) */
+  .category-list-container .category-form {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .category-list-container .category-form h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .category-list-container .category-form div {
+    margin-bottom: 10px;
+  }
+  
+  .category-list-container .category-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .category-list-container .category-form input,
+  .category-list-container .category-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .category-list-container .category-form button[type="submit"] {
+    background-color: #28a745; /* Save button color */
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .category-list-container .category-form button[type="submit"]:hover {
+    background-color: #218838;
+  }
+  
+  /* SubcategoryList Styles (More Specific) */
+  .category-list-container .subcategory-list {
+    padding: 20px;
+  }
+  
+  .category-list-container .subcategory-list h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
