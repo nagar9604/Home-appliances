@@ -12,10 +12,10 @@ const bodyParser = require('body-parser');
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // MySQL Connection
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "project",
+  host: process.env.DB_HOST,       
+  user: process.env.DB_USER,      
+  password: process.env.DB_PASSWORD, 
+  database: process.env.DB_NAME,
 });
 
 db.connect((err) => {
@@ -26,6 +26,11 @@ db.connect((err) => {
     console.log("Database Connected Successfully");
   }
 });
+
+
+
+
+
 
 // Admin login route
 app.post("/Adminpenal", (req, res) => {
@@ -1097,6 +1102,7 @@ app.get('/api/refrigerators/sidebyside', (req, res) => {
 });
 
 // ---------------------- Server Start ----------------------
+
 
 app.listen(5000, () => {
   console.log("The Server is Running on port 5000..........");
