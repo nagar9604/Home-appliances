@@ -3,7 +3,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header1 from "./Header1";
 
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const ProductDetails = () => {
     const today = new Date().toISOString().split('T')[0];
     
@@ -68,7 +68,7 @@ const ProductDetails = () => {
         formDataToSend.append("subCategory", formData.subCategory); // Send subCategory name
 
         try {
-            const response = await axios.post("http://localhost:5000/add-product",formDataToSend,{ headers: { "Content-Type": "multipart/form-data" } });
+            const response = await axios.post(`${API_BASE_URL}/add-product`,formDataToSend,{ headers: { "Content-Type": "multipart/form-data" } });
 
             if (response.status === 200) {
                 alert("Product added successfully!");

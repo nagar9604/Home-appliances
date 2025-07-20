@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header1 from "./Header1";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 function Serfeedback() {
     const [feedback, setFeedback] = useState("");
@@ -20,7 +21,7 @@ function Serfeedback() {
         }
 
         try {
-            const response = await axios.post("http://localhost:5000/submit-serviceprovider-feedback", { serviceprovider_id, feedback });
+            const response = await axios.post(`${API_BASE_URL}/submit-serviceprovider-feedback`, { serviceprovider_id, feedback });
 
             if (response.data.success) {
                 toast.success("Feedback Submitted Successfully!", { position: "top-center" });

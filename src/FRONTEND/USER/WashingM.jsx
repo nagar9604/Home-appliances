@@ -8,7 +8,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const WashingM = () => {
   const navigate = useNavigate();
   const [topLoadProducts, setTopLoadProducts] = useState([]);
@@ -18,7 +18,7 @@ const WashingM = () => {
     const fetchTopLoadWashingMachines = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/washingmachines/topload"
+          "${API_BASE_URL}/api/washingmachines/topload"
         );
         setTopLoadProducts(response.data);
       } catch (error) {
@@ -29,7 +29,7 @@ const WashingM = () => {
     const fetchFrontLoadWashingMachines = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/washingmachines/frontload"
+          "${API_BASE_URL}/api/washingmachines/frontload"
         );
         setFrontLoadProducts(response.data);
       } catch (error) {
@@ -46,7 +46,7 @@ const WashingM = () => {
     
     const cartItem = {
       id: product.product_id, // Unique ID
-      image: `http://localhost:5000/uploads/${product.product_image}`, // Full image URL
+      image: `${API_BASE_URL}/uploads/${product.product_image}`, // Full image URL
       name: product.product_name,
       description: product.product_description,
       price: product.product_price,
@@ -88,7 +88,7 @@ const WashingM = () => {
                     className="card product-card shadow-sm h-100"
                   >
                 <img
-                      src={`http://localhost:5000/uploads/${product.product_image}`}
+                      src={`${API_BASE_URL}/uploads/${product.product_image}`}
                       className="card-img"
                       alt={product.product_name}
                       style={{ height: "275px" }}
@@ -144,7 +144,7 @@ const WashingM = () => {
                     className="card product-card shadow-sm h-100"
                   >
                     <img
-                      src={`http://localhost:5000/uploads/${product.product_image}`}
+                      src={`${API_BASE_URL}/uploads/${product.product_image}`}
                       className="card-img"
                       alt={product.product_name}
                       style={{ height: "275px" }}

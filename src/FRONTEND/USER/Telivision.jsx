@@ -8,7 +8,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const Telivision = () => {
   const navigate = useNavigate();
   const [ledProducts, setLedProducts] = useState([]);
@@ -18,7 +18,7 @@ const Telivision = () => {
     const fetchLedTelevisions = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/televisions/led"
+          "${API_BASE_URL}/api/televisions/led"
         );
         setLedProducts(response.data);
       } catch (error) {
@@ -29,7 +29,7 @@ const Telivision = () => {
     const fetchQledTelevisions = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/televisions/qled"
+          "${API_BASE_URL}/api/televisions/qled"
         );
         setQledProducts(response.data);
       } catch (error) {
@@ -46,7 +46,7 @@ const Telivision = () => {
 
     const cartItem = {
       id: product.product_id, // Unique ID
-      image: `http://localhost:5000/uploads/${product.product_image}`, // Full image URL
+      image: `${API_BASE_URL}/uploads/${product.product_image}`, // Full image URL
       name: product.product_name,
       description: product.product_description,
       price: product.product_price,
@@ -88,7 +88,7 @@ const Telivision = () => {
                     className="card product-card shadow-sm h-100"
                   >
                     <img
-                      src={`http://localhost:5000/uploads/${product.product_image}`}
+                      src={`${API_BASE_URL}/uploads/${product.product_image}`}
                       className="card-img"
                       alt={product.product_name}
                       style={{ height: "275px" }}
@@ -143,7 +143,7 @@ const Telivision = () => {
                     className="card product-card shadow-sm h-100"
                   >
                     <img
-                      src={`http://localhost:5000/uploads/${product.product_image}`}
+                      src={`${API_BASE_URL}/uploads/${product.product_image}`}
                       className="card-img"
                       alt={product.product_name}
                       style={{ height: "275px" }}

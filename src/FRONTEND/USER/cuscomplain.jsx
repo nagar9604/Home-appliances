@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CusHeader from "./CusHeader";
 import CusFooter from "./CusFooter";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 function Cuscomplain() {
   const [complain, setComplain] = useState("");
 
@@ -20,7 +20,7 @@ function Cuscomplain() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/submit-complaint", {
+      const response = await fetch(`${API_BASE_URL}/submit-complaint`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

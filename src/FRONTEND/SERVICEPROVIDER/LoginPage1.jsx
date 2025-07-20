@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Style/Loginpage.css";
 import { useNavigate, Link } from "react-router-dom";
 import Header1 from "./Header1";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const Serviceproviderlogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +19,7 @@ const Serviceproviderlogin = () => {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5000/ServiceProviderLogin", {
+      const res = await fetch(`${API_BASE_URL}/ServiceProviderLogin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

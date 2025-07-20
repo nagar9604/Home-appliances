@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Style/ComplainList.css";
 import Header from "./Header";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const ComplainList = () => {
   const [Complains, setComplains] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/complainlist")
+      .get(`${API_BASE_URL}/complainlist`)
       .then((response) => setComplains(response.data)) // Updated from setCustomers to setComplains
       .catch((error) => console.error("Error fetching complains:", error));
   }, []);

@@ -3,6 +3,7 @@ import axios from "axios";
 import SubcategoryList from "./SubcategoryList";
 import Header from "./Header";
 import "./Style/CategoryList.css"
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 function CategoryList() {
   const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
@@ -13,7 +14,7 @@ function CategoryList() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/categories");
+      const response = await axios.get("${API_BASE_URL}/categories");
       setCategories(response.data);
     } catch (error) {
       console.error("Error fetching categories:", error);
@@ -23,7 +24,7 @@ function CategoryList() {
   const handleDelete = async (categoryId) => {
     if (window.confirm("Are you sure you want to delete this category?")) {
       try {
-        await axios.delete(`http://localhost:5000/categories/${categoryId}`);
+        await axios.delete(`${API_BASE_URL}/categories/${categoryId}`);
         fetchCategories();
         setSelectedCategoryId(null); // Reset subcategory view
       } catch (error) {

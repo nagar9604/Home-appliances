@@ -32,7 +32,7 @@ function CategoryForm({ category, fetchCategories, setSelectedCategory }) {
 
     try {
       await axios.put(
-        `http://localhost:5000/categories/${category.productcategory_id}`,
+        `${API_BASE_URL}/categories/${category.productcategory_id}`,
         { name, description }
       );
       fetchCategories();

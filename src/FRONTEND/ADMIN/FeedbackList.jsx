@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Style/FeedbackList.css"; 
 import Header from "./Header";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const FeedbackList = () => {
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/feedbacklist")
+      .get(`${API_BASE_URL}/feedbacklist`)
       .then((response) => setFeedbacks(response.data))
       .catch((error) => console.error("Error fetching feedbacks:", error));
   },); 

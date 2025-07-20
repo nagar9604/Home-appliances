@@ -5,6 +5,7 @@ import "./Styles/userLoginpage.css";
 import CusHeader from "./CusHeader";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const CusLogin = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ const CusLogin = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
+      const response = await axios.post(`${API_BASE_URL}/api/login`, {
         email,
         password,
       });

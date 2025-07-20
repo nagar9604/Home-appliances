@@ -4,7 +4,7 @@ import "./Style/Loginpage.css";
 import { Link } from "react-router-dom";
 import Header1 from "./Header1";
 
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const UserRegistrationPage = () => {
   const [formData, setFormData] = useState({
     userName: "",
@@ -36,7 +36,7 @@ const UserRegistrationPage = () => {
     // }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/serviceproviderregister", {
+      const response = await axios.post(`${API_BASE_URL}/api/serviceproviderregister`, {
         userName,
         userContact,
         userEmail,

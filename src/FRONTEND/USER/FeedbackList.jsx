@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Spinner, Alert, Card, Form, Button } from "react-bootstrap";
 import Header1 from "../SERVICEPROVIDER/Header1";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const CustomerFeedbackList = () => {
   const [feedback, setFeedback] = useState([]);
@@ -16,7 +17,7 @@ const CustomerFeedbackList = () => {
   const fetchFeedback = async () => {
     setLoading(true);
     try {
-      let url = "http://localhost:5000/userfeedbacklist";
+      let url = `${API_BASE_URL}/userfeedbacklist`;
       if (startDate && endDate) {
         url += `?start_date=${startDate}&end_date=${endDate}`;
       }

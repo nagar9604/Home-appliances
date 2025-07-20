@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SubcategoryForm from "./SubcategoryForm";
 import "./Style/CategoryList.css"
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 function SubcategoryList({ categoryId }) {
   const [subcategories, setSubcategories] = useState([]);
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
@@ -13,7 +14,7 @@ function SubcategoryList({ categoryId }) {
   const fetchSubcategories = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/categories/${categoryId}/subcategories`
+        `${API_BASE_URL}/categories/${categoryId}/subcategories`
       );
       setSubcategories(response.data);
     } catch (error) {
@@ -24,7 +25,7 @@ function SubcategoryList({ categoryId }) {
   const handleDelete = async (subcategoryId) => {
     if (window.confirm("Are you sure you want to delete this subcategory?")) {
       try {
-        await axios.delete(`http://localhost:5000/subcategories/${subcategoryId}`);
+        await axios.delete(`${API_BASE_URL}/subcategories/${subcategoryId}`);
         fetchSubcategories(); // Refresh list
       } catch (error) {
         console.error("Error deleting subcategory:", error);

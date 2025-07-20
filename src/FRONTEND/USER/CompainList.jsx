@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Spinner, Alert, Card, Form, Button } from "react-bootstrap";
 import Header1 from "../SERVICEPROVIDER/Header1";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const CustomerComplaintList = () => {
   const [complaints, setComplaints] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +16,7 @@ const CustomerComplaintList = () => {
   const fetchComplaints = async () => {
     setLoading(true);
     try {
-      let url = "http://localhost:5000/usercomplainlist";
+      let url = `${API_BASE_URL}/usercomplainlist`;
       if (startDate && endDate) {
         url += `?start_date=${startDate}&end_date=${endDate}`;
       }

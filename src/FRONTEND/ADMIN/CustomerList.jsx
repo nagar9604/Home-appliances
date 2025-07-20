@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Style/CustomerList.css";
 import Header from "./Header";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const CustomerList = () => {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/customerslist")
+      .get("${API_BASE_URL}/customerslist")
       .then((response) => setCustomers(response.data))
       .catch((error) => console.error("Error fetching customers:", error));
   }, []);
@@ -17,7 +17,7 @@ const CustomerList = () => {
   const deleteCustomer = async (userId) => {
     if (window.confirm("Are you sure?")) {
       try {
-        await axios.delete(`http://localhost:5000/customer/${userId}`);
+        await axios.delete(`${API_BASE_URL}/customer/${userId}`);
         setCustomers(
           customers.filter((customer) => customer.user_id !== userId)
         );

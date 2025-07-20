@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Style/CategoryList.css"
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 function SubcategoryForm({
   categoryId,
   subcategory,
@@ -46,12 +47,12 @@ function SubcategoryForm({
     try {
       if (subcategory) {
         await axios.put(
-          `http://localhost:5000/subcategories/${subcategory.p_sub_cata_id}`,
+          `${API_BASE_URL}/subcategories/${subcategory.p_sub_cata_id}`,
           { name, description, category_id: categoryId }
         );
       } else {
         await axios.post(
-          `http://localhost:5000/categories/${categoryId}/subcategories`,
+          `${API_BASE_URL}/categories/${categoryId}/subcategories`,
           { name, description }
         );
       }

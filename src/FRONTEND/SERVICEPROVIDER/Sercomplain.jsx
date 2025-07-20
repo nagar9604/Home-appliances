@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Image } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 import Header1 from "./Header1";
 
 function SerComplain() {
@@ -18,7 +18,7 @@ function SerComplain() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/submit-service-complaint", {
+      const response = await fetch(`${API_BASE_URL}/submit-service-complaint`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
