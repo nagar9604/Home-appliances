@@ -3,29 +3,29 @@ import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { AiOutlineHome } from "react-icons/ai";
-import { FiSearch } from "react-icons/fi";
+
 import { RiShoppingBag3Line } from "react-icons/ri";
-import "./Styles/CusHeader.css";
+// import "./Styles/CusHeader.css";
 
 function CusHeader({ cartCount = 0 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate;
 
   // Handle search and redirect to results page
-  const handleSearch = () => {
-    if (searchTerm.trim()) {
-      navigate(`/search/${searchTerm.trim()}`); // Redirect to the search results page
-    } else {
-      alert("Please enter a search term.");
-    }
-  };
+  // const handleSearch = () => {
+  //   if (searchTerm.trim()) {
+  //     navigate(`/search/${searchTerm.trim()}`); // Redirect to the search results page
+  //   } else {
+  //     alert("Please enter a search term.");
+  //   }
+  // };
 
   // Trigger search on "Enter" key press
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
-  };
+  // const handleKeyPress = (e) => {
+  //   if (e.key === "Enter") {
+  //     handleSearch();
+  //   }
+  // };
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark bg-black">
