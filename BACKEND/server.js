@@ -6,27 +6,27 @@ const bcrypt = require("bcrypt");
  const multer = require("multer");
  const path = require('path');
 const app = express();
-
+app.use(cors({}))
 // Configure CORS
-const allowedOrigins = [
-  'http://localhost:5173', // Keep this for local development
-  'https://home-app-frontend.onrender.com' // <-- ✨ ADD YOUR ACTUAL RENDER FRONTEND URL HERE ✨
-  // If you have other domains that need to access your backend, add them here too
-];
+// const allowedOrigins = [
+//   'http://localhost:5173', // Keep this for local development
+//   'https://home-app-frontend.onrender.com' // <-- ✨ ADD YOUR ACTUAL RENDER FRONTEND URL HERE ✨
+//   // If you have other domains that need to access your backend, add them here too
+// ];
 
-app.use(cors({
-  origin: function (origin, callback) {
-      // allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-          const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-          return callback(new Error(msg), false);
-      }
-      return callback(null, true);
-  },
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow common HTTP methods
-  credentials: true // Set to true if your frontend sends cookies or authorization headers
-}));
+// app.use(cors({
+//   origin: function (origin, callback) {
+//       // allow requests with no origin (like mobile apps or curl requests)
+//       if (!origin) return callback(null, true);
+//       if (allowedOrigins.indexOf(origin) === -1) {
+//           const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+//           return callback(new Error(msg), false);
+//       }
+//       return callback(null, true);
+//   },
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow common HTTP methods
+//   credentials: true // Set to true if your frontend sends cookies or authorization headers
+// }));
 app.use(express.json());
 const bodyParser = require('body-parser');
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
