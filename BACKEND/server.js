@@ -6,36 +6,38 @@ const bcrypt = require("bcrypt");
  const multer = require("multer");
  const path = require('path');
 const app = express();
-app.use(cors({}))
-// Configure CORS
-// const allowedOrigins = [
-//   'http://localhost:5173', // Keep this for local development
-//   'https://home-app-frontend.onrender.com' // <-- ✨ ADD YOUR ACTUAL RENDER FRONTEND URL HERE ✨
-//   // If you have other domains that need to access your backend, add them here too
-// ];
+require('dotenv').config(); // Add this line at the top
 
-// app.use(cors({
-//   origin: function (origin, callback) {
-//       // allow requests with no origin (like mobile apps or curl requests)
-//       if (!origin) return callback(null, true);
-//       if (allowedOrigins.indexOf(origin) === -1) {
-//           const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-//           return callback(new Error(msg), false);
-//       }
-//       return callback(null, true);
-//   },
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow common HTTP methods
-//   credentials: true // Set to true if your frontend sends cookies or authorization headers
-// }));
+
+const allowedOrigins = [
+  'http://localhost:5173', // For local development
+  'https://home-appliances-frontend.onrender.com' // ✨ PASTE YOUR ACTUAL RENDER FRONTEND PUBLIC URL HERE ✨
+  // Example: 'https://your-frontend-service-name.onrender.com'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // Allow requests with no origin (e.g., Postman, curl)
+      if (allowedOrigins.indexOf(origin) === -1) {
+          const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+          return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Adjust if you use other methods
+  credentials: true // Important if you use cookies or session IDs
+}));
+
+
 app.use(express.json());
 const bodyParser = require('body-parser');
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // MySQL Connection
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,       
-  user: process.env.DB_USER,      
-  password: process.env.DB_PASSWORD, 
-  database: process.env.DB_NAME,
+  host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 });
 
 db.connect((err) => {
